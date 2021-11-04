@@ -20,7 +20,7 @@ class ProdConfig(Config):
     DEBUG = False
     TESTING = False
     DATABASE_URI = path.join(basedir, environ.get('PROD_DATABASE_URI'))
-    SERVER_NAME = "NEED NAME HERE"
+    SERVER_NAME = "http://www.risleyarchives.com"
 
 
 class DevConfig(Config):

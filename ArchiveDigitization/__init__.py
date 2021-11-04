@@ -155,7 +155,6 @@ def submitPhoto():
 
     with open(path, 'wb') as f:
         f.write(base64.b64decode(b64[22:]))
-    
 
     return redirect(url_for('digitize_page'))
 
