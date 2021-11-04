@@ -37,6 +37,10 @@ cameraButton.addEventListener('click', function (e) {
   console.log('here');
 });
 
+document.getElementById('snap').addEventListener('click', function (e) {
+  sendData();
+});
+
 function sendData() {
   if (document.getElementById('cat').value == "") {
     alert('Don\'t forget to add a category!');
