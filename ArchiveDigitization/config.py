@@ -10,8 +10,8 @@ class Config:
     """Base config."""
     SECRET_KEY = environ.get('SECRET_KEY')
     # SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
-    STATIC_FOLDER = 'static'
-    TEMPLATES_FOLDER = 'templates'
+    STATIC_FOLDER = path.join(basedir, 'static')
+    TEMPLATES_FOLDER = path.join(basedir, 'templates')
     UPLOAD_FOLDER = path.join(STATIC_FOLDER, 'imgs/')
 
 
@@ -20,7 +20,7 @@ class ProdConfig(Config):
     DEBUG = False
     TESTING = False
     DATABASE_URI = path.join(basedir, environ.get('PROD_DATABASE_URI'))
-    SERVER_NAME = "risleyarchives.com:80"
+    #SERVER_NAME = "risleyarchives.com:80"
 
 
 class DevConfig(Config):

@@ -153,7 +153,7 @@ def submitPhoto():
     filename = f'{file_id}.png'
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
-    with open(path, 'wb') as f:
+    with open(path, 'wb+') as f:
         f.write(base64.b64decode(b64[22:]))
 
     return redirect(url_for('digitize_page'))
