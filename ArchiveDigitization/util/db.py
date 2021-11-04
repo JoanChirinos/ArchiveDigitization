@@ -157,7 +157,7 @@ class DBManager:
         c = db.cursor()
 
         c.execute('INSERT INTO files VALUES(?,?,?)',
-                  (id, categry,0))
+                  (id, category,0))
 
         db.commit()
         db.close()
