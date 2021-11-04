@@ -46,14 +46,15 @@ function sendData() {
   
   
   XHR.addEventListener('load', function (event) {
-//    alert('success!');
+    alert('success!');
     count += 1;
     counter.innerHTML = count.toString();
     console.log(event);
   })
-//  XHR.addEventListener('error', function (event) {
-//    alert('Something went wrong! Please email Joan');
-//  })
+  XHR.addEventListener('error', function (event) {
+    alert('Something went wrong! Please email Joan');
+    console.log(event);
+  })
   
   XHR.open('POST', 'https://risleyarchives.com/submitPhoto');
   XHR.send(FD);
