@@ -25,18 +25,20 @@
       </div>
       <div class="row">
         <div class="col">
-          <video id="camStream" autoplay></video>
+<!--          <video id="camStream" autoplay></video>-->
         </div>
       </div>
       <div class="row">
         <div class="col" id="buttonDiv">
-          <button class="btn btn-success" id="camAccess">Start digitizing!</button>
+<!--          <button class="btn btn-success" id="camAccess">Start digitizing!</button>-->
         </div>
       </div>
-      <div class="row" id="hiddenCol" hidden>
+      <div class="row" id="hiddenCol">
         <div class="col">
           <form id="imageForm" method="post" enctype="multipart/form-data" action="/submitPhoto">
-            <input name="img" type="text" id="imageInput" hidden>
+<!--            <input name="img" type="text" id="imageInput" hidden>-->
+            <input type="file" accept="image/*" name="actualImage" capture>
+            <input type="submit" class="btn btn-success" value="snap!">
             <br>
 <!--            <input type="submit">-->
           </form>

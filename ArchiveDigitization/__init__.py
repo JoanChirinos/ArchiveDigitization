@@ -147,15 +147,18 @@ def digitize_page():
 
 @app.route('/submitPhoto', methods=['POST'])
 def submitPhoto():
-    b64 = request.form['img']
+    # b64 = request.form['img']
+    img = request.files['actualImage']
     category = request.form['category']
 
     file_id = str(uuid.uuid4())
     filename = f'{file_id}.png'
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
-    with open(path, 'wb+') as f:
-        f.write(base64.b64decode(b64[22:]))
+    img.save(path)
+
+    # with open(path, 'wb+') as f:
+    #     f.write(base64.b64decode(b64[22:]))
 
     dbm.add_file(file_id, category)
 

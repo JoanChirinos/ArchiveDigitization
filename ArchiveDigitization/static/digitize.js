@@ -34,6 +34,7 @@ cameraButton.addEventListener('click', function (e) {
     sendData();
     
   })
+  console.log('here');
 });
 
 function sendData() {
