@@ -162,7 +162,7 @@ def submitPhoto():
 
     dbm.add_file(file_id, category)
 
-    return b64
+    return 'sigh'
 
 
 if __name__ == '__main__':
