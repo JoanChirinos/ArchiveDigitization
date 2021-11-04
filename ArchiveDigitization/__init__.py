@@ -164,6 +164,15 @@ def submitPhoto():
 
     return 'sigh'
 
+'''
+    so basically we just needed the img input type
+    thats the only thing that'll work
+    your frustration, while reasonable, will be palpable
+    clean up the site and make sure the image submit thing works
+    sorry g
+    at least now you know how to make it work on web ;(
+'''
+
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
