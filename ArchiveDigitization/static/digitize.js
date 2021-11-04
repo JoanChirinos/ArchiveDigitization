@@ -30,7 +30,7 @@ cameraButton.addEventListener('click', function (e) {
     var data = canvas.toDataURL('image/png');
     photo.setAttribute('value', data);
     
-    
+    console.log('aqui!');
     sendData();
     
   })
@@ -44,20 +44,23 @@ function sendData() {
   const XHR = new XMLHttpRequest();
   const FD = new FormData(form);
   
-  
+  console.log('here');
   XHR.addEventListener('load', function (event) {
     alert('success!');
+    console.log('success');
     count += 1;
     counter.innerHTML = count.toString();
     console.log(event);
   })
   XHR.addEventListener('error', function (event) {
     alert('Something went wrong! Please email Joan');
+    console.log('nono');
     console.log(event);
   })
   
   XHR.open('POST', 'https://risleyarchives.com/submitPhoto');
   XHR.send(FD);
+  console.log('sent');
 }
 
 camAccessButton.addEventListener('click', async (e) => {
