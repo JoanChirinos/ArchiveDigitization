@@ -62,9 +62,9 @@ camAccessButton.addEventListener('click', async (e) => {
   let w = Math.floor(seventyvh * (720/1080))
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {
-      height: {ideal: seventyvh},
-      width: {ideal: w},
-      facingMode: 'environment'
+//      height: {ideal: seventyvh},
+//      width: {ideal: w},
+      facingMode: { exact: 'environment' }
     },
     audio: false
   });
