@@ -37,6 +37,10 @@ cameraButton.addEventListener('click', function (e) {
 });
 
 function sendData() {
+  if (document.getElementById('cat').value == "") {
+    alert('Don\'t forget to add a category!');
+    return;
+  }
   const XHR = new XMLHttpRequest();
   const FD = new FormData(form);
   
