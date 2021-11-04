@@ -49,6 +49,7 @@ function sendData() {
 //    alert('success!');
     count += 1;
     counter.innerHTML = count.toString();
+    console.log(event);
   })
 //  XHR.addEventListener('error', function (event) {
 //    alert('Something went wrong! Please email Joan');
