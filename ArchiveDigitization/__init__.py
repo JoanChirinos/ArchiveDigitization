@@ -165,3 +165,9 @@ if __name__ == '__main__':
     else:
         if sys.argv[1] == 'create_db':
             dbm.create_db()
+        elif sys.argv[1] == 'sql_command':
+            if len(sys.argv) > 3:
+                print('Too many args. Encase command in quotes!')
+                return
+            else:
+                dbm.raw_command(sys.argv[2])

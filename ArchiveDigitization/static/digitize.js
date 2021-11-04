@@ -28,7 +28,7 @@ cameraButton.addEventListener('click', function (e) {
     photo.setAttribute('value', data);
     
     
-//    sendData();
+    sendData();
     
   })
 });
@@ -38,14 +38,14 @@ function sendData() {
   const FD = new FormData(form);
   
   
-  XHR.addEventListener('load', function (event) {
-    alert('success!');
-  })
-  XHR.addEventListener('error', function (event) {
-    alert('Something went wrong! Please email Joan');
-  })
+//  XHR.addEventListener('load', function (event) {
+//    alert('success!');
+//  })
+//  XHR.addEventListener('error', function (event) {
+//    alert('Something went wrong! Please email Joan');
+//  })
   
-  XHR.open('POST', 'http://127.0.0.1:5000/submitPhoto');
+  XHR.open('POST', 'http://risleyarchives.com/submitPhoto');
   XHR.send(FD);
 }
 

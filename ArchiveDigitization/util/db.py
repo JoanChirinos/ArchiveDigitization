@@ -292,3 +292,26 @@ class DBManager:
             return tuple()
 
         return ids
+
+    def raw_command(self, command: str) -> bool:
+        '''
+        Run raw command.
+
+        Parameters
+        ----------
+        command : str
+            the command to run.
+
+        Returns
+        -------
+        bool
+            True on success.
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        c.execute(command)
+
+        db.commit()
+        db.close()
