@@ -45,7 +45,7 @@ function sendData() {
 //    alert('Something went wrong! Please email Joan');
 //  })
   
-  XHR.open('POST', 'http://risleyarchives.com/submitPhoto');
+  XHR.open('POST', 'https://risleyarchives.com/submitPhoto');
   XHR.send(FD);
 }
 
