@@ -10,6 +10,9 @@ const photo = document.getElementById('imageInput');
 
 var form = document.getElementById('imageForm');
 
+var count = 0;
+const counter = document.getElementById('picCount');
+
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 //const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
@@ -38,9 +41,11 @@ function sendData() {
   const FD = new FormData(form);
   
   
-//  XHR.addEventListener('load', function (event) {
+  XHR.addEventListener('load', function (event) {
 //    alert('success!');
-//  })
+    count += 1;
+    counter.innerHTML = count.toString();
+  })
 //  XHR.addEventListener('error', function (event) {
 //    alert('Something went wrong! Please email Joan');
 //  })
