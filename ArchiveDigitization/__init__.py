@@ -22,10 +22,10 @@ import config
 app = Flask(__name__)
 
 # Production Config
-# app.config.from_object(config.ProdConfig)
+app.config.from_object(config.ProdConfig)
 
 # Development Config
-app.config.from_object(config.DevConfig)
+# app.config.from_object(config.DevConfig)
 
 # Database Manager with correct databse path and table defns path
 with app.app_context():
