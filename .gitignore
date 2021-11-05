@@ -123,3 +123,9 @@ keys/
 
 # Setup
 setup
+
+# Images
+*.png
+
+# Database
+*.db
