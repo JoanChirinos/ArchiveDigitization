@@ -16,7 +16,7 @@ from flask import (Flask, render_template, redirect, url_for, session, request,
                    flash, current_app)
 from markupsafe import Markup
 
-from util import db, helpers
+from util import db, helpers, digitize
 import config
 
 app = Flask(__name__)
@@ -172,3 +172,9 @@ if __name__ == '__main__':
                 print('Too many args. Encase command in quotes!')
             else:
                 dbm.raw_command(sys.argv[2])
+        elif sys.argv[1] == 'digitize':
+            with app.app_context():
+                cwd = os.getcwd()
+                dbm = db.DBManager(current_app.config['DATABASE_URI'],
+                                   f'{cwd}/static/table_definitions.sql')
+                digitize.main(dbm, current_app.config['STATIC_FOLDER'])
