@@ -167,6 +167,14 @@ def submitPhoto():
     return 'sigh'
 
 
+@app.route('/doDigitization')
+def doDigitization():
+    cwd = os.getcwd()
+    dbm = db.DBManager(app.config['DATABASE_URI'],
+                       f'{cwd}/static/table_definitions.sql')
+    digitize.main(dbm, os.path.split(app.config['STATIC_FOLDER'])[0])
+
+
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         app.run()
@@ -178,9 +186,3 @@ if __name__ == '__main__':
                 print('Too many args. Encase command in quotes!')
             else:
                 dbm.raw_command(sys.argv[2])
-        elif sys.argv[1] == 'digitize':
-            with app.app_context():
-                cwd = os.getcwd()
-                dbm = db.DBManager(current_app.config['DATABASE_URI'],
-                                   f'{cwd}/static/table_definitions.sql')
-                digitize.main(dbm, os.path.split(current_app.config['STATIC_FOLDER'])[0])
