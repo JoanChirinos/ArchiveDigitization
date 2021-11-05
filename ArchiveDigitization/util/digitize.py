@@ -11,7 +11,7 @@ import os
 import concurrent.futures
 import urllib.request
 
-import db
+import util.db
 
 def get_text(id: str) -> str:
     '''
@@ -55,7 +55,7 @@ def get_text(id: str) -> str:
     j = json.loads(r.text)
     return j['responses'][0]['fullTextAnnotation']['text']
 
-def main(dbm: DBManager, path_to_static: str):
+def main(dbm: 'DBManager', path_to_static: str):
     '''
     Manage the ThreadPoolExecutor.
 
