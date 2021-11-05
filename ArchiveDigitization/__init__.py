@@ -147,16 +147,8 @@ def digitize_page():
 
 @app.route('/digitized')
 def digitized_page():
-    raw_imgs = dbm.get_files(True, True)
-    cooked_imgs = []
-    for img in raw_imgs:
-        id, category = img
-        path_to_static = os.path.join(app.config['STATIC_FOLDER'])
-        path_to_file = os.path.join(path_to_static, 'text/', f'{id}.txt')
-        with open(path_to_file) as f:
-            text = f.read()
-            cooked_imgs.append((id, category, text))
-    return render_template('digitized.html', imgs=cooked_imgs)
+    imgs = dbm.get_files(True, True)
+    return render_template('digitized.html', imgs=imgs)
 
 
 @app.route('/submitPhoto', methods=['POST'])

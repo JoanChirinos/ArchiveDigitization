@@ -91,13 +91,13 @@ def main(dbm: 'DBManager', path_to_project: str):
             id = future_to_id[future]
             try:
                 data = future.result()
-                text_file_path = os.path.join(path_to_project,
-                                              'static/',
-                                              'text/',
-                                              f'{id}.txt')
-                with open(text_file_path, 'w+') as f:
-                    f.write(data)
-                dbm.set_digitized(id)
+                # text_file_path = os.path.join(path_to_project,
+                #                               'static/',
+                #                               'text/',
+                #                               f'{id}.txt')
+                # with open(text_file_path, 'w+') as f:
+                #     f.write(str(data))
+                dbm.set_text(str(data))
             except Exception as exc:
                 print(f'{id} generated an exception: {exc}')
             else:
