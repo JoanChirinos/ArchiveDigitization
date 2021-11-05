@@ -30,7 +30,8 @@ def get_text(id: str) -> str:
     '''
     # build the Google endpoint
     key = os.environ.get('GOOGLE_API_KEY')
-    endpoint = f'https://vision.googleapis.com/v1/images:annotate?key={key}'
+    print(key)
+    endpoint = f'ttps://vision.googleapis.com/v1/images:annotate?key={key}'
 
     # build the image endpoint
     imgUri = f'https://risleyarchives.com/static/imgs/{id}.png'
@@ -49,8 +50,8 @@ def get_text(id: str) -> str:
 
     r = requests.post(endpoint, data=Request)
 
-    # print(r)
-    # print(r.text)
+    print(r)
+    print(r.text)
 
     j = json.loads(r.text)
     return j['responses'][0]['fullTextAnnotation']['text']
