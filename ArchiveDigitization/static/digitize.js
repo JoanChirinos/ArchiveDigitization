@@ -13,7 +13,7 @@ imgInput.addEventListener('change', function (e) {
     var reader = new FileReader();
     reader.onload = function(x) {
       imgDispl.setAttribute('src', x.target.result);
-      imgDispl.visibility = 'visible';
+      imgDispl.classList.remove('d-block');
     };
     reader.readAsDataURL(imgInput.files[0]);
   }
@@ -30,7 +30,7 @@ submit.addEventListener('click', function (e) {
     docCount.innerHTML = counter.toString();
     imgInput.value = '';
     imgDispl.setAttribute('src', '');
-    imgDispl.visibility = 'hidden';
+    imgDispl.classList.add('d-block');
   });
   
   XHR.addEventListener('error', function (e) {
