@@ -16,7 +16,7 @@ from flask import (Flask, render_template, redirect, url_for, session, request,
                    flash, current_app)
 from markupsafe import Markup
 
-from util import db, helpers
+from util import db, helpers, digitize
 import config
 
 app = Flask(__name__)
@@ -147,7 +147,6 @@ def digitize_page():
 
 @app.route('/submitPhoto', methods=['POST'])
 def submitPhoto():
-    # b64 = request.form['img']
     img = request.files['actualImage']
     category = request.form['category']
 
@@ -157,21 +156,9 @@ def submitPhoto():
 
     img.save(path)
 
-    # with open(path, 'wb+') as f:
-    #     f.write(base64.b64decode(b64[22:]))
-
     dbm.add_file(file_id, category)
 
     return 'sigh'
-
-'''
-    so basically we just needed the img input type
-    thats the only thing that'll work
-    your frustration, while reasonable, will be palpable
-    clean up the site and make sure the image submit thing works
-    sorry g
-    at least now you know how to make it work on web ;(
-'''
 
 
 if __name__ == '__main__':
@@ -185,3 +172,9 @@ if __name__ == '__main__':
                 print('Too many args. Encase command in quotes!')
             else:
                 dbm.raw_command(sys.argv[2])
+        elif sys.argv[1] == 'digitize':
+            with app.app_context():
+                cwd = os.getcwd()
+                dbm = db.DBManager(current_app.config['DATABASE_URI'],
+                                   f'{cwd}/static/table_definitions.sql')
+                digitize.main(dbm, current_app.config['STATIC_FOLDER'])

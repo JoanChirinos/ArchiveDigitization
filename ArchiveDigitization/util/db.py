@@ -256,7 +256,7 @@ class DBManager:
 
         return [x[0] for x in ids]
 
-    def get_file_ids(self, by_digitized: bool = False,
+    def get_files(self, by_digitized: bool = False,
                      digitized_value: bool = False) -> Tuple[str, ...]:
         '''
         Get file IDs and categories based on parameters.
