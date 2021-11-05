@@ -35,7 +35,7 @@ submit.addEventListener('click', function (e) {
     console.log('ahh!!');
   });
   
-  XHR.open('POST', 'https://risleyarchives.com/ENTERENDPOINT')
+  XHR.open('POST', 'https://risleyarchives.com/submitPhoto')
   
   XHR.send(FD);
 });
