@@ -79,7 +79,7 @@ def main(dbm: DBManager, path_to_static: str):
     # images to be digitized
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         future_to_id = {executor.submit(get_text, id): id for id in IDs}
-        for future in concurrent.futures.as_completed(future_to_url):
+        for future in concurrent.futures.as_completed(future_to_id):
             id = future_to_id[future]
             try:
                 data = future.result()
@@ -98,7 +98,7 @@ def main(dbm: DBManager, path_to_static: str):
 Example code from python3.8 docs:
 
 import concurrent.futures
-import urllib.request
+import lib.request
 
 URLS = ['http://www.foxnews.com/',
         'http://www.cnn.com/',
