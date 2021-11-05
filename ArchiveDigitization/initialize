@@ -1,0 +1,8 @@
+sudo rm data/*
+sudo rm static/imgs/*
+sudo rm static/text/*
+
+sudo python3 __init__.py create_db
+source setPermissions
+
+sudo service apache2 restart
