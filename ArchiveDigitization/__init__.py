@@ -147,7 +147,6 @@ def digitize_page():
 
 @app.route('/submitPhoto', methods=['POST'])
 def submitPhoto():
-    # b64 = request.form['img']
     img = request.files['actualImage']
     category = request.form['category']
 
@@ -157,21 +156,9 @@ def submitPhoto():
 
     img.save(path)
 
-    # with open(path, 'wb+') as f:
-    #     f.write(base64.b64decode(b64[22:]))
-
     dbm.add_file(file_id, category)
 
     return 'sigh'
-
-'''
-    so basically we just needed the img input type
-    thats the only thing that'll work
-    your frustration, while reasonable, will be palpable
-    clean up the site and make sure the image submit thing works
-    sorry g
-    at least now you know how to make it work on web ;(
-'''
 
 
 if __name__ == '__main__':

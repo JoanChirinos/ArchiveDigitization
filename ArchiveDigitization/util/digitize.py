@@ -6,6 +6,8 @@ Python file facilitating document digitization
 Copyright Joan Chirinos, 2021.
 '''
 
+import os
+
 import concurrent.futures
 import urllib.request
 
@@ -53,19 +55,48 @@ def get_text(id: str) -> str:
     j = json.loads(r.text)
     return j['responses'][0]['fullTextAnnotation']['text']
 
-def main(dbm):
+def main(dbm: DBManager, path_to_static: str):
+    '''
+    Manage the ThreadPoolExecutor.
+
+    Parameters
+    ----------
+    dbm : DBManager
+        the DataBase Manager.
+    path_to_static : str
+        the path to the static folder.
+
+    Returns
+    -------
+    type
+        Description of returned object.
+
+    '''
     # Here we get the IDs for the docs that need to be digitized
-    IDs = []
+    IDs = dbm.get_file_ids(True, False)
 
     # Here we create a pool of threads that are each working to send off the
     # images to be digitized
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         future_to_id = {executor.submit(get_text, id): id for id in IDs}
         for future in concurrent.futures.as_completed(future_to_url):
-            id = future_to_id
+            id = future_to_id[future]
+            try:
+                data = future.result()
+                text_file_path = os.path.join(path_to_static,
+                                             'text/',
+                                             f'{id}.txt')
+                with open(text_file_path, 'w+') as f:
+                    f.write(data)
+                dbm.set_digitized(id)
+            except Exception as exc:
+                print(f'{id} generated an exception: {exc}')
+            else:
+                print(f'{id} has been digitized')
 
 '''
-Example code:
+Example code from python3.8 docs:
+
 import concurrent.futures
 import urllib.request
 
