@@ -95,7 +95,7 @@ def authenticate():
         return redirect(url_for('home'))
     else:
         flash('Incorrect username or password!', 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('login_page'))
 
 
 @app.route('/registerUser', methods=['POST'])
@@ -118,7 +118,7 @@ def register():
         s = ('Email already in use! <a href="/login" class="alert-link">'
              + 'Log in?</a>')
         flash(Markup(s), 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('register_page'))
     else:
         session['email'] = email
         flash('Account creastion successful!', 'success')
@@ -143,6 +143,18 @@ def digitize_page():
     #     flash('You don\'t have access to that page!')
     #     return redirect(url_for(home))
     return render_template('digitize.html')
+
+
+@app.route('/digitized')
+def digitized_page():
+    raw_imgs = dbm.get_files(True, True)
+    cooked_imgs = []
+    for img in raw_imgs:
+        id, category = img
+        with open(url_for('static', filename=f'text/{id}.txt')) as f:
+            text = f.read()
+            cooked_imgs.append((id, category, text))
+    return render_template('digitized.html', imgs=cooked_imgs)
 
 
 @app.route('/submitPhoto', methods=['POST'])
