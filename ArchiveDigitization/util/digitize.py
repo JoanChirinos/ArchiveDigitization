@@ -37,7 +37,7 @@ def get_text(id: str) -> str:
     '''
     # build the Google endpoint
     key = os.environ.get('GOOGLE_API_KEY')
-    print(key)
+    # print(key)
     endpoint = f'https://vision.googleapis.com/v1/images:annotate?key={key}'
 
     # build the image endpoint
