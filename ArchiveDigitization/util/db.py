@@ -156,8 +156,8 @@ class DBManager:
         db = sqlite3.connect(self.db_filename)
         c = db.cursor()
 
-        c.execute('INSERT INTO files VALUES(?,?,?)',
-                  (id, category,0))
+        c.execute('INSERT INTO files VALUES(?,?,?,?)',
+                  (id, category,0,''))
 
         db.commit()
         db.close()
