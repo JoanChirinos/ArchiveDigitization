@@ -174,6 +174,8 @@ def doDigitization():
                        f'{cwd}/static/table_definitions.sql')
     digitize.main(dbm, os.path.split(app.config['STATIC_FOLDER'])[0])
 
+    return 'All done!'
+
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
