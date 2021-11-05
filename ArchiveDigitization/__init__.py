@@ -177,4 +177,4 @@ if __name__ == '__main__':
                 cwd = os.getcwd()
                 dbm = db.DBManager(current_app.config['DATABASE_URI'],
                                    f'{cwd}/static/table_definitions.sql')
-                digitize.main(dbm, current_app.config['STATIC_FOLDER'])
+                digitize.main(dbm, os.path.split(current_app.config['STATIC_FOLDER'])[0])

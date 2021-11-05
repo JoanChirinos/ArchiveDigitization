@@ -8,10 +8,17 @@ Copyright Joan Chirinos, 2021.
 
 import json, requests, sys, os
 
+
 import concurrent.futures
 import urllib.request
 
 import util.db
+
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
 
 def get_text(id: str) -> str:
     '''
@@ -55,7 +62,7 @@ def get_text(id: str) -> str:
     j = json.loads(r.text)
     return j['responses'][0]['fullTextAnnotation']['text']
 
-def main(dbm: 'DBManager', path_to_static: str):
+def main(dbm: 'DBManager', path_to_project: str):
     '''
     Manage the ThreadPoolExecutor.
 
@@ -83,9 +90,10 @@ def main(dbm: 'DBManager', path_to_static: str):
             id = future_to_id[future]
             try:
                 data = future.result()
-                text_file_path = os.path.join(path_to_static,
-                                             'text/',
-                                             f'{id}.txt')
+                text_file_path = os.path.join(path_to_project,
+                                              'static/',
+                                              'text/',
+                                              f'{id}.txt')
                 with open(text_file_path, 'w+') as f:
                     f.write(data)
                 dbm.set_digitized(id)
