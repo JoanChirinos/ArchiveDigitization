@@ -14,6 +14,18 @@
 
     <div class="container">
       <h1 class="display-1">WIP!</h1>
+      <div class="my-2 text-center">
+          <button type="button" class="btn btn-danger w-100 dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#privacyWarning" aria-expanded="false" aria-controls="privacyWarning">Warning</button>
+          <div class="collapse" id="privacyWarning">
+            <div class="alert alert-danger fw-bold">
+              Warning: If you can see this, it means every file you upload to this site is public information. All image files and their corresponding text representations can be accessed by anyone who knows how. This is to facilitate testing. Upon final launch, the server will not serve any raw files (neither text nor images), and every file will be restricted in relation to your authorization level.
+              <br>
+              Your password, however, will always be kept secure using standard encryption methods. The encrypted password will be extremely difficult for anyone to access, and almost impossible for anyone to decrypt. Fear not, squiddos.
+              <br>
+              <span class="fw-bolder">DO NOT UPLOAD SENSITIVE INFORMATION</span>
+            </div>
+          </div>
+        </div>
       <a class="btn btn-success" href="/login">Log in</a>
       <a class="btn btn-danger" href="/logout">Log out</a>
       <a class="btn btn-primary" href="/register">Register</a>

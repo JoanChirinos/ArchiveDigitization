@@ -15,7 +15,18 @@
 <body>
 
   <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-
+    <div class="my-2 w-75 text-center">
+      <button type="button" class="btn btn-danger w-100 dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#privacyWarning" aria-expanded="false" aria-controls="privacyWarning">Warning</button>
+      <div class="collapse" id="privacyWarning">
+        <div class="alert alert-danger fw-bold">
+          Warning: If you can see this, it means every file you upload to this site is public information. All image files and their corresponding text representations can be accessed by anyone who knows how. This is to facilitate testing. Upon final launch, the server will not serve any raw files (neither text nor images), and every file will be restricted in relation to your authorization level.
+          <br>
+          Your password, however, will always be kept secure using standard encryption methods. The encrypted password will be extremely difficult for anyone to access, and almost impossible for anyone to decrypt. Fear not, squiddos.
+          <br>
+          <span class="fw-bolder">DO NOT UPLOAD SENSITIVE INFORMATION</span>
+        </div>
+      </div>
+    </div>
     <div class="card w-100" style="max-width: 400px;">
       <div class="card-body">
         <a href="/" class="text-decoration-none">
