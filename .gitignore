@@ -123,3 +123,6 @@ keys/
 
 # Setup
 setup
+
+# Mac
+.DS_Store
