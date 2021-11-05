@@ -13,6 +13,7 @@
   <body>
     
     <div class="container mt-2">
+      <a class="btn btn-outline-secondary" href="/">Go back to homepage</a>
       <div class="display-2 text-center mb-4 text-decoration-underline">Digitize!</div>
       <div class="text-center">
         <h2 class="h2">Total documents so far: <span id="docCount">0</span></h2>
@@ -26,7 +27,7 @@
           <label for="imgInput" class="form-label">Take a picture of your current document</label>
           <input type="file" accept="image/*" capture="camera" class="form-control" id="imgInput" name="actualImage">
         </div>
-        <img class="img-fluid mb-2 mx-auto d-block" alt="Document Image" id="imgDispl" style="max-height: 50vh;" hidden>
+        <img class="img-fluid mb-2 mx-auto d-block" id="imgDispl" style="max-height: 50vh;" hidden>
       </form>
       <div class="text-center">
         <button type="button" class="btn btn-success px-4" id="submitButton">Submit!</button>

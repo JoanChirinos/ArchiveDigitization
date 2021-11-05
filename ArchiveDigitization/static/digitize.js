@@ -13,7 +13,7 @@ imgInput.addEventListener('change', function (e) {
     var reader = new FileReader();
     reader.onload = function(x) {
       imgDispl.setAttribute('src', x.target.result);
-      imgDispl.removeAttribute('hidden');
+      imgDispl.visibility = 'visible';
     };
     reader.readAsDataURL(imgInput.files[0]);
   }
@@ -28,6 +28,9 @@ submit.addEventListener('click', function (e) {
     console.log('submitted!');
     counter += 1;
     docCount.innerHTML = counter.toString();
+    imgInput.value = '';
+    imgDispl.setAttribute('src', '');
+    imgDispl.visibility = 'hidden';
   });
   
   XHR.addEventListener('error', function (e) {
