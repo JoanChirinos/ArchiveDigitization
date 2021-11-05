@@ -3,6 +3,8 @@ const docCount = document.getElementById('docCount');
 
 const form = document.getElementById('form');
 
+const category = document.getElementById('category');
+
 const imgInput = document.getElementById('imgInput');
 const imgDispl = document.getElementById('imgDispl');
 
@@ -20,6 +22,16 @@ imgInput.addEventListener('change', function (e) {
 });
 
 submit.addEventListener('click', function (e) {
+  
+  if (category.value.trim().length == 0) {
+    alert('Don\'t forget to add a category!');
+    return;
+  }
+  else if (imgInput.files.length == 0) {
+    alert('Don\'t forget to add an image!');
+    return;
+  }
+  
   const XHR = new XMLHttpRequest();
   
   var FD = new FormData(form);
