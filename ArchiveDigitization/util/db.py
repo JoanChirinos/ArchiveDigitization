@@ -164,7 +164,7 @@ class DBManager:
 
         return True
 
-    def set_digitized(self, id: str) -> bool:
+    def set_text(self, id: str, text: str) -> bool:
         '''
         Set the is_digitized column in files table for given id to 1.
 
@@ -172,6 +172,8 @@ class DBManager:
         ----------
         id : str
             the ID.
+        text : str
+            the text.
 
         Returns
         -------
@@ -185,6 +187,8 @@ class DBManager:
 
         c.execute('UPDATE files SET is_digitized=? WHERE id=?',
                   (1, id))
+        .execute('UPDATE files SET image_text=? WHERE id=?',
+                  (text, id))
 
         db.commit()
         db.close()
@@ -281,10 +285,10 @@ class DBManager:
         c = db.cursor()
 
         if by_digitized:
-            c.execute('SELECT id, category FROM files WHERE is_digitized=?',
+            c.execute('SELECT id, category, image_text FROM files WHERE is_digitized=?',
                       (digitized_value,))
         else:
-            c.execute('SELECT id FROM files')
+            c.execute('SELECT id, category, image_text FROM files')
 
         ids = c.fetchall()
 
