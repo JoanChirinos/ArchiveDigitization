@@ -97,7 +97,7 @@ def main(dbm: 'DBManager', path_to_project: str):
                 #                               f'{id}.txt')
                 # with open(text_file_path, 'w+') as f:
                 #     f.write(str(data))
-                dbm.set_text(str(data))
+                dbm.set_text(id, str(data))
             except Exception as exc:
                 print(f'{id} generated an exception: {exc}')
             else:
