@@ -6,7 +6,7 @@ Python file facilitating document digitization
 Copyright Joan Chirinos, 2021.
 '''
 
-import os
+import json, requests, sys, os
 
 import concurrent.futures
 import urllib.request
