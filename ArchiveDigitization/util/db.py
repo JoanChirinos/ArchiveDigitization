@@ -187,7 +187,7 @@ class DBManager:
 
         c.execute('UPDATE files SET is_digitized=? WHERE id=?',
                   (1, id))
-        .execute('UPDATE files SET image_text=? WHERE id=?',
+        c.execute('UPDATE files SET image_text=? WHERE id=?',
                   (text, id))
 
         db.commit()
