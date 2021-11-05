@@ -1,2 +1,4 @@
 sudo chown -R www-data:www-data /var/www/ArchiveDigitization/ArchiveDigitization/data
+sudo chown -R www-data:www-data /var/www/ArchiveDigitization/ArchiveDigitization/static/imgs
+sudo chown -R www-data:www-data /var/www/ArchiveDigitization/ArchiveDigitization/static/text
 sudo chown -R www-data:www-data /var/www/ArchiveDigitization/ArchiveDigitization/static
