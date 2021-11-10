@@ -197,7 +197,7 @@ def addTag():
     # Get and process tags
     tags = dbm.get_all_tags()
 
-    tags = [tag + [True] if tag[1] in selected or tag[1] == tag_name
+    tags = [tag + [True] if tag[0] in selected or tag[1] == tag_name
             else tag + [False]
             for tag in tags]
 
