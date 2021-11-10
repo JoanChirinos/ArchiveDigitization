@@ -45,15 +45,12 @@
           <label for="category">Document Category</label>
         </div>
 -->
-        <button type="button" class="btn btn-success my-2" id="newTag">New Tag</button>
-        <div id="selectPickerStuff" class="my-2">
-          
+        <button type="button" class="btn btn-success my-2 mx-2" id="newTag">New Tag</button>
           <select class="selectpicker" data-live-search="true" id="thing" data-dropup-auto="false" multiple>
             {% for id, name in tags %}
             <option value="{{ id }}">{{ name }}</option>
             {% endfor %}
           </select>
-        </div>
 
         <div class="mb-1">
           <label for="imgInput" class="form-label">Take a picture of your current document</label>
