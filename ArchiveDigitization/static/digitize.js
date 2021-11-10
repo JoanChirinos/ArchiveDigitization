@@ -23,18 +23,35 @@ imgInput.addEventListener('change', function (e) {
 
 submit.addEventListener('click', function (e) {
   
-  if (category.value.trim().length == 0) {
-    alert('Don\'t forget to add a category!');
-    return;
-  }
-  else if (imgInput.files.length == 0) {
+//  if (category.value.trim().length == 0) {
+//    alert('Don\'t forget to add a category!');
+//    return;
+//  }
+  if (imgInput.files.length == 0) {
     alert('Don\'t forget to add an image!');
     return;
   }
   
+  var selectedL = $('.selectpicker').find('option:selected');
+  var selected = [];
+  for (opt of selectedL) {
+    selected = selected.concat(opt.value);
+  }
+  console.log(selected);
+
+  if (selected.length == 0) {
+    alert('Don\'t forget to add some tags!');
+    return;
+  }
+  
+  
   const XHR = new XMLHttpRequest();
   
   var FD = new FormData(form);
+  
+  
+
+  FD.append('selected', selected);
   
   XHR.addEventListener('load', function (e) {
     console.log('submitted!');

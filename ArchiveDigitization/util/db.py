@@ -135,7 +135,9 @@ class DBManager:
 
         return True
 
-    def add_file(self, id: str, category: str) -> bool:
+    # files(id TEXT PRIMARY KEY, is_digitized INT, image_text TEXT)
+    # tags(id TEXT, name TEXT, file_id TEXT)
+    def add_file(self, id: str, tags: List[str]) -> bool:
         '''
         Add ID to DB to represent image/text files.
 
@@ -143,8 +145,8 @@ class DBManager:
         ----------
         id : str
             the ID.
-        category : str
-            the category.
+        tags : List[str]
+            the list of tags.
 
         Returns
         -------
@@ -156,8 +158,13 @@ class DBManager:
         db = sqlite3.connect(self.db_filename)
         c = db.cursor()
 
-        c.execute('INSERT INTO files VALUES(?,?,?,?)',
-                  (id, category,0,''))
+        c.execute('INSERT INTO files VALUES(?,?,?)',
+                  (id,0,''))
+
+        for tag_id in tags:
+            tag_name = self.get_tag_name(tag_id)
+            c.execute('INSERT INTO tags VALUES(?,?,?)',
+                      (tag_id, tag_name, id))
 
         db.commit()
         db.close()

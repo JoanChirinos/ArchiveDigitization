@@ -156,7 +156,7 @@ def digitized_page():
 @app.route('/submitPhoto', methods=['POST'])
 def submitPhoto():
     img = request.files['actualImage']
-    category = request.form['category']
+    tags = request.form['selected']
 
     file_id = str(uuid.uuid4())
     filename = f'{file_id}.png'
@@ -164,7 +164,7 @@ def submitPhoto():
 
     img.save(path)
 
-    dbm.add_file(file_id, category)
+    dbm.add_file(file_id, tags)
 
     return 'sigh'
 
