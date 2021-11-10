@@ -108,6 +108,7 @@ window.onload = function (e) {
 //        console.log(JSON.parse(r)['response'])
         
         var tags = JSON.parse(r)['response'];
+        console.log(r);
         var selectedTags = [];
         for (tag of tags) {
           let tag_id = tag[0];
