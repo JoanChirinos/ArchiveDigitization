@@ -115,11 +115,11 @@ window.onload = function (e) {
           let isSelected = tag[2];
           
           if (isSelected) {
-            selectedTags.push(name);
+            selectedTags.push(id);
           }
           $('.selectpicker').append(`<option value="${id}">${name}</option>`);
         }
-        $('.selectpicker').selectpicker('val', selectedTags);
+        $('.selectpicker').selectpicker('val', id);
         $('.selectpicker').selectpicker('refresh');
       });
       
