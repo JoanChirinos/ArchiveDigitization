@@ -374,7 +374,7 @@ class DBManager:
         db = sqlite3.connect(self.db_filename)
         c = db.cursor()
 
-        if this.get_tag_id(tag_name)[0]:
+        if self.get_tag_id(tag_name)[0]:
             return False, 'tag name already exists'
 
         tag_id = str(uuid.uuid4())
