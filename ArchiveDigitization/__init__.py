@@ -202,7 +202,7 @@ def addTag():
 
     tags = sorted(tags, key=lambda x: x[2], reverse=True)
 
-    return tags
+    return {'response': tags}
 
     # need to return the options tags already selected, and the new tag
 
