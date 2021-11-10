@@ -297,6 +297,117 @@ class DBManager:
 
         return ids
 
+    def get_tag_name(self, tag_id: str) -> str:
+        '''
+        Get tag name from tag id.
+
+        Parameters
+        ----------
+        tag_id : str
+            the tag id.
+
+        Returns
+        -------
+        Tuple[bool, str]
+            (True, tag_name) on success.
+            (False, error_msg) on failure.
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        c.execute('SELECT name FROM _tags WHERE id=?',
+                  (tag_id,))
+
+        name = c.fetchone()
+
+        if name is None:
+            return False, 'Tag id does not exist'
+
+        return True, name[0]
+
+    def get_tag_id(self, tag_name: str) -> Tuple[bool, str]:
+        '''
+        Get tag id from tag name.
+
+        Parameters
+        ----------
+        tag_name : str
+            tag name.
+
+        Returns
+        -------
+        Tuple[bool, str]
+            (True, tag_id) on success.
+            (False, error_msg) on failure.
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        c.execute('SELECT id FROM _tags WHERE name=?',
+                  (tag_name,))
+
+        id = c.fetchone()
+
+        if id is None:
+            return False, 'Tag name does not exist'
+
+        return True, id[0]
+
+    def create_tag(self, tag_name: str) -> Tuple[bool, str]:
+        '''
+        Create tag using tag name.
+
+        Parameters
+        ----------
+        tag_name : str
+            the tag name.
+
+        Returns
+        -------
+        Tuple[bool, str]
+            (True, tag_id) on success.
+            (False, error_msg) on failure.
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        if this.get_tag_id(tag_name)[0]:
+            return False, 'tag name already exists'
+
+        tag_id = str(uuid.uuid4())
+
+        c.execute('INSERT INTO _tags VALUES(?,?)',
+                  (tag_id, tag_name))
+
+        db.commit()
+        db.close()
+
+        return True, tag_id
+
+    def get_all_tags(self) -> List[List[str,str],...]:
+        '''
+        Return all tags ids and names.
+
+        Returns
+        -------
+        Tuple[Tuple[str,str],...]
+            Tuple of (id, name) tuples
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        c.exeute('SELECT id, name FROM _tags')
+
+        tags = c.fetchall()
+
+        return [list(tag) for tag in tags]
+
+
+
     def raw_command(self, command: str) -> bool:
         '''
         Run raw command.

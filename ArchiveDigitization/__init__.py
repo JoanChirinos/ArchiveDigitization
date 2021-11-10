@@ -15,6 +15,7 @@ import base64
 from flask import (Flask, render_template, redirect, url_for, session, request,
                    flash, current_app)
 from markupsafe import Markup
+import json
 
 from util import db, helpers, digitize
 import config
@@ -175,6 +176,35 @@ def doDigitization():
     digitize.main(dbm, os.path.split(app.config['STATIC_FOLDER'])[0])
 
     return 'All done!'
+
+
+@app.route('/addTag', methods=['POST'])
+def addTag():
+    print(request.form)
+    # Splitting on commas if any values selected, otherwise empty list
+    selected = request.form['selected']
+    selected = ','.split(selected) if selected != '' else []
+
+    # Name for new tag
+    tag_name = request.form['newTag']
+
+    success, tag_id = dbm.create_tag(tag_name)
+
+    if not success:
+        pass
+
+    # Get and process tags
+    tags = dbm.get_all_tags()
+
+    tags = [tag + [True] if tag[1] in selected of tag[1] == tag_name
+            else tag + [False]
+            for tag in tags]
+
+    tags = sorted(tags, key=lambda x: x[2], reverse=True)
+
+    return tags, [tag for tag in tags if tag[2]]
+
+    # need to return the options tags already selected, and the new tag
 
 
 if __name__ == '__main__':
