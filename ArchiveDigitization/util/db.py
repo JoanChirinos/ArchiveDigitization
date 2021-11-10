@@ -400,7 +400,7 @@ class DBManager:
         db = sqlite3.connect(self.db_filename)
         c = db.cursor()
 
-        c.exeute('SELECT id, name FROM _tags')
+        c.execute('SELECT id, name FROM _tags')
 
         tags = c.fetchall()
 
