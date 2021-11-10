@@ -6,7 +6,7 @@ Python file facilitating database management and authentication
 Copyright Joan Chirinos, 2021.
 """
 
-from typing import Tuple
+from typing import Tuple, List
 import uuid
 # import datetime
 
