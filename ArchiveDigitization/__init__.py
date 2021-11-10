@@ -157,6 +157,7 @@ def digitized_page():
 def submitPhoto():
     img = request.files['actualImage']
     tags = request.form['selected']
+    tags = tags.split(',') if tags != '' else []
 
     raise Exception('t4r: {}, t: {}, t0: {}'.format(tags, type(tags), type(tags[0])))
 
