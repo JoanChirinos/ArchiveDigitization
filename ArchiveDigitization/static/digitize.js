@@ -123,6 +123,8 @@ window.onload = function (e) {
         }
         $('.selectpicker').selectpicker('val', selectedTags);
         $('.selectpicker').selectpicker('refresh');
+        $('.selectpicker').selectpicker('refresh');
+        $('.selectpicker').selectpicker('refresh');
       });
       
       XHR.addEventListener('error', function(e) {
