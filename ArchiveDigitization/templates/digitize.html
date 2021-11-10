@@ -48,7 +48,7 @@
         <button type="button" class="btn btn-success my-2" id="newTag">New Tag</button>
         <div id="selectPickerStuff" class="my-2">
           
-          <select class="selectpicker" data-live-search="true" id="thing" multiple>
+          <select class="selectpicker" data-live-search="true" id="thing" data-dropup-auto="false" multiple>
             {% for id, name in tags %}
             <option value="{{ id }}">{{ name }}</option>
             {% endfor %}
