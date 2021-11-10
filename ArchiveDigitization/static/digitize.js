@@ -90,6 +90,7 @@ window.onload = function (e) {
       for (opt of selectedL) {
         selected = selected.concat(opt.value);
       }
+      console.log(selected);
       
       var newTagName = cb.value.trim();
       if (newTagName == "") {
