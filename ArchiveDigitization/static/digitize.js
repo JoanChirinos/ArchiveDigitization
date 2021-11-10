@@ -101,6 +101,7 @@ window.onload = function (e) {
       FD.append('newTag', cb.value.trim());
       
       XHR.addEventListener('load', function (e) {
+        $('.selectpicker').empty();
         var r = XHR.responseText;
 //        console.log(r);
 //        console.log(JSON.parse(r));
