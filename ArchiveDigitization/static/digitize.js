@@ -118,7 +118,7 @@ window.onload = function (e) {
           }
           $('.selectpicker').append(`<option value="${id}">${name}</option>`);
         }
-        $('.selectpicker').seletpicker('val', selectedTags);
+        $('.selectpicker').selectpicker('val', selectedTags);
         $('.selectpicker').selectpicker('refresh');
       });
       
