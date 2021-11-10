@@ -158,7 +158,7 @@ def submitPhoto():
     img = request.files['actualImage']
     tags = request.form['selected']
 
-    raise Exception('t: {}, t0: {}'.format(type(tags), type(tags[0])))
+    raise Exception('t4r: {}, t: {}, t0: {}'.format(tags, type(tags), type(tags[0])))
 
     file_id = str(uuid.uuid4())
     filename = f'{file_id}.png'
