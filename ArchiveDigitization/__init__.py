@@ -196,13 +196,13 @@ def addTag():
     # Get and process tags
     tags = dbm.get_all_tags()
 
-    tags = [tag + [True] if tag[1] in selected of tag[1] == tag_name
+    tags = [tag + [True] if tag[1] in selected or tag[1] == tag_name
             else tag + [False]
             for tag in tags]
 
     tags = sorted(tags, key=lambda x: x[2], reverse=True)
 
-    return tags, [tag for tag in tags if tag[2]]
+    return tags
 
     # need to return the options tags already selected, and the new tag
 
