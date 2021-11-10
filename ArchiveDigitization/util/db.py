@@ -162,7 +162,9 @@ class DBManager:
                   (id,0,''))
 
         for tag_id in tags:
-            tag_name = self.get_tag_name(tag_id)
+            success, tag_name = self.get_tag_name(tag_id)
+            if not success:
+                return False
             c.execute('INSERT INTO tags VALUES(?,?,?)',
                       (tag_id, tag_name, id))
 
