@@ -110,16 +110,16 @@ window.onload = function (e) {
         var tags = JSON.parse(r)['response'];
         var selectedTags = [];
         for (tag of tags) {
-          let id = tag[0];
+          let tag_id = tag[0];
           let name = tag[1];
           let isSelected = tag[2];
           
           if (isSelected) {
-            selectedTags.push(id);
+            selectedTags.push(tag_id);
           }
-          $('.selectpicker').append(`<option value="${id}">${name}</option>`);
+          $('.selectpicker').append(`<option value="${tag_id}">${name}</option>`);
         }
-        $('.selectpicker').selectpicker('val', id);
+        $('.selectpicker').selectpicker('val', selectedTags);
         $('.selectpicker').selectpicker('refresh');
       });
       
