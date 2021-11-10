@@ -184,7 +184,7 @@ def addTag():
     print(request.form)
     # Splitting on commas if any values selected, otherwise empty list
     selected = request.form['selected']
-    selected = ','.split(selected) if selected != '' else []
+    # selected = ','.split(selected) if selected != '' else []
 
     # Name for new tag
     tag_name = request.form['newTag']
