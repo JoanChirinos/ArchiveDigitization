@@ -143,7 +143,8 @@ def digitize_page():
     # if 'email' not in session:
     #     flash('You don\'t have access to that page!')
     #     return redirect(url_for(home))
-    return render_template('digitize.html')
+    tags = sorted(dbm.get_all_tags())
+    return render_template('digitize.html', tags=tags)
 
 
 @app.route('/digitized')

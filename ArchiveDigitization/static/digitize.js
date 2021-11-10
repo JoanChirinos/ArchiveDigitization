@@ -102,10 +102,24 @@ window.onload = function (e) {
       
       XHR.addEventListener('load', function (e) {
         var r = XHR.responseText;
-        console.log(r);
-        console.log(JSON.parse(r));
-        console.log(JSON.parse(r)['response'])
+//        console.log(r);
+//        console.log(JSON.parse(r));
+//        console.log(JSON.parse(r)['response'])
         
+        var tags = JSON.parse(r)['response'];
+        var selectedTags = [];
+        for (tag of tags) {
+          let id = tag[0];
+          let name = tag[1];
+          let isSelected = tag[2];
+          
+          if (isSelected) {
+            selectedTags.push(name);
+          }
+          $('.selectpicker').append(`<option value="${id}">${name}</option>`);
+        }
+        $('.selectpicker').seletpicker('val', selectedTags);
+        $('.selectpicker').selectpicker('refresh');
       });
       
       XHR.addEventListener('error', function(e) {

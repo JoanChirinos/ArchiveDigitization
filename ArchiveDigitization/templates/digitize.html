@@ -49,10 +49,9 @@
         <div id="selectPickerStuff" class="my-2">
           
           <select class="selectpicker" data-live-search="true" id="thing" multiple>
-            <option value="1">1</option>
-            <option value="4">2</option>
-            <option value="9">3</option>
-            <option value="16">4</option>
+            {% for id, name in tags %}
+            <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
           </select>
         </div>
 
