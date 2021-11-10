@@ -387,7 +387,7 @@ class DBManager:
 
         return True, tag_id
 
-    def get_all_tags(self) -> List[List[str,str],...]:
+    def get_all_tags(self) -> List[List[str]]:
         '''
         Return all tags ids and names.
 
