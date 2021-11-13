@@ -357,8 +357,9 @@ class DBManager:
         valid_file_search += ','.join([f'"{id}"' for id in valid_files])
         valid_file_search += ')'
 
-        c.execute('SELECT id, image_text FROM files WHERE id IN ?',
-                  (valid_file_search,))
+        ins = f'SELECT id, image_text FROM files WHERE id IN {valid_file_search}'
+
+        c.execute(ins)
 
         out = c.fetchall()
 
