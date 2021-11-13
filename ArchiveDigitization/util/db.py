@@ -324,8 +324,12 @@ class DBManager:
         db = sqlite3.connect(self.db_filename)
         c = db.cursor()
 
+        tag_list_search = '('
+        tag_list_search += ','.join([f'"{id}"' for id in tag_list])
+        tag_list_search += ')'
+
         c.execute('SELECT id, file_id FROM tags WHERE id IN ?',
-                  (str(tuple(tag_list)),))
+                  (tag_list_search,))
 
         files = c.fetchall()
 
@@ -346,8 +350,12 @@ class DBManager:
             if file_tag_set == tag_set:
                 valid_files.append(file_id)
 
+        valid_file_search = '('
+        valid_file_search += ','.join([f'"{id}"' for id in valid_files])
+        valid_file_search += ')'
+
         c.execute('SELECT id, image_text FROM files WHERE id IN ?',
-                  (str(tuple(valid_files)),))
+                  (valid_file_search,))
 
         out = c.fetchall()
 
