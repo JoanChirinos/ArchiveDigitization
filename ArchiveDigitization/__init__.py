@@ -149,8 +149,7 @@ def digitize_page():
 
 @app.route('/digitized')
 def digitized_page():
-    imgs = dbm.get_files(True, True)
-    return render_template('digitized.html', imgs=imgs)
+    return 'WIP!'
 
 
 @app.route('/submitPhoto', methods=['POST'])
