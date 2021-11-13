@@ -325,7 +325,7 @@ class DBManager:
         c = db.cursor()
 
         c.execute('SELECT id, file_id FROM tags WHERE id IN ?',
-                  (str(tag_list),))
+                  (tuple(tag_list),))
 
         files = c.fetchall()
 
@@ -347,7 +347,7 @@ class DBManager:
                 valid_files.append(file_id)
 
         c.execute('SELECT id, image_text FROM files WHERE id IN ?',
-                  (str(valid_files),))
+                  (tuple(valid_files),))
 
         out = c.fetchall()
 
