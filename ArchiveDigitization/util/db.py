@@ -328,6 +328,10 @@ class DBManager:
         tag_list_search += ','.join([f'"{id}"' for id in tag_list])
         tag_list_search += ')'
 
+        ins = f'SELECT id, file_id FROM tags WHERE id IN {tag_list_search}'
+
+        raise Exception(ins)
+
         c.execute('SELECT id, file_id FROM tags WHERE id IN ?',
                   (tag_list_search,))
 
