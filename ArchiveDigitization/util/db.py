@@ -330,10 +330,9 @@ class DBManager:
 
         ins = f'SELECT id, file_id FROM tags WHERE id IN {tag_list_search}'
 
-        raise Exception(ins)
+        # raise Exception(ins)
 
-        c.execute('SELECT id, file_id FROM tags WHERE id IN ?',
-                  (tag_list_search,))
+        c.execute(ins)
 
         files = c.fetchall()
 
