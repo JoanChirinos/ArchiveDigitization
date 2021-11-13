@@ -158,8 +158,6 @@ def digitized_page():
 
     tags = sorted(dbm.get_all_tags(), key=lambda x: x[1])
 
-
-
     return render_template('digitized.html',
                            imgs=imgs,
                            tags=tags,
