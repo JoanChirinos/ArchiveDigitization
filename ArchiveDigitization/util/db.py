@@ -306,6 +306,55 @@ class DBManager:
 
         return ids
 
+    def get_files_by_tags(self, tag_list: List[str]) -> List[Tuple[str, str]]:
+        '''
+        Get files filtered by tag_list.
+
+        Parameters
+        ----------
+        tag_list : List[str]
+            List of tags to filter by.
+
+        Returns
+        -------
+        List[Tuple[str, str]]
+            List of (img_id, img_text) tuples.
+
+        '''
+        db = sqlite3.connect(self.db_filename)
+        c = db.cursor()
+
+        c.execute('SELECT id, file_id FROM tags WHERE id IN ?',
+                  (tag_list,))
+
+        files = c.fetchall()
+
+        if files == []:
+            return files
+
+        d = {}
+        for tag_id, file_id in files:
+            if file_id not in d:
+                d[file_id] = set()
+            d[file_id].add(tag_id)
+
+        tag_set = set(tag_list)
+
+        valid_files = []
+
+        for file_id, file_tag_set in d.items():
+            if file_tag_set == tag_set:
+                valid_files.append(file_id)
+
+        c.execute('SELECT id, image_text FROM files WHERE id IN ?',
+                  (valid_files,))
+
+        out = c.fetchall()
+
+        return out
+
+
+
     def get_tag_name(self, tag_id: str) -> str:
         '''
         Get tag name from tag id.
@@ -402,8 +451,8 @@ class DBManager:
 
         Returns
         -------
-        Tuple[Tuple[str,str],...]
-            Tuple of (id, name) tuples
+        List[List[str]]
+            List of [id, name] lists
 
         '''
         db = sqlite3.connect(self.db_filename)

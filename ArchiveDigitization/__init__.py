@@ -149,7 +149,21 @@ def digitize_page():
 
 @app.route('/digitized')
 def digitized_page():
-    return 'WIP!'
+    selected_tags = request.args.getlist('tags')
+    if selected_tags == [] or selected_tags == ['']:
+        selected_tags = []
+        imgs = []
+    else:
+        imgs = dbm.get_files_by_tags(selected_tags)
+
+    tags = sorted(dbm.get_all_tags(), key=lambda x: x[1])
+
+
+
+    return render_template('digitized.html',
+                           imgs=imgs,
+                           tags=tags,
+                           selectedTags=selected_tags)
 
 
 @app.route('/submitPhoto', methods=['POST'])
