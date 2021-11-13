@@ -15,7 +15,6 @@
     gtag('js', new Date());
 
     gtag('config', 'G-J8ZJS3HNM6');
-
   </script>
 
   <script data-ad-client="ca-pub-9850275161791714" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -40,10 +39,15 @@
 
   <div class="container mt-2">
     <a class="btn btn-outline-secondary" href="/">Go back to homepage</a>
-    <div class="display-2 text-center mb-4 text-decoration-underline">Digitize!</div>
+    <div class="display-3 text-center mb-4 text-decoration-underline">Digitize!</div>
     <div class="text-center">
       <div class="my-2">
-        <button type="button" class="btn btn-danger w-100 dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#privacyWarning" aria-expanded="false" aria-controls="privacyWarning">Warning</button>
+        <!-- Bootstrap 5 -->
+        <!--        <button type="button" class="btn btn-danger w-100 dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#privacyWarning" aria-expanded="false" aria-controls="privacyWarning">Warning</button>-->
+        <!-- Bootstrap 4 -->
+        <button class="btn btn-danger w-100 dropdown-toggle" type="button" data-toggle="collapse" data-target="#privacyWarning" aria-expanded="false" aria-controls="privacyWarning">
+          Warning
+        </button>
         <div class="collapse" id="privacyWarning">
           <div class="alert alert-danger fw-bold">
             Warning: If you can see this, it means every file you upload to this site is public information. All image files and their corresponding text representations can be accessed by anyone who knows how. This is to facilitate testing. Upon final launch, the server will not serve any raw files (neither text nor images), and every file will be restricted in relation to your authorization level.
@@ -55,7 +59,7 @@
         </div>
       </div>
       <div>
-        <h2 class="h2">Total documents so far: <span id="docCount">0</span></h2>
+        <h4 class="h4">Total documents so far: <span id="docCount">0</span></h4>
       </div>
     </div>
     <form id="form" enctype="multipart/form-data">
@@ -100,11 +104,8 @@
     myDefaultWhiteList.button = [];
 
     $.fn.selectpicker.Constructor.BootstrapVersion = '4';
-
   </script>
 
   <!--    <script src="../static/digitize.js"></script>-->
   <script src="{{ url_for('static', filename='digitize.js') }}"></script>
-</body>
-
-</html>
+</body></html>
